@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	font-family:"Helvetica", Arial, sans-serif;
+	margin:0;
+	background-image:url(background.GIF);
+	background-size:cover;
+	background-position-x: 830px;
+}
+#header {
+	
+}
+#container {
+	width:1000px;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding:10px;
+  background-color: white;
+}
+.form-row {
+	padding: 2px;
+	margin: 0px 0px 10px 0px;
+
+}
+#button a{
+
+	padding: 10px;
+
+}
+h1 {
+	text-align: center;
+}
+h3 {
+	text-align: center;
+}
+#header p {
+	text-align: right;
+}
+#nav a{
+	width: 200px;
+	height:40px;
+	line-height:50px;
+	font-size:20px;
+	display:inline-block;
+	text-align: center;
+	text-decoration: none;
+	padding: 0px 0px 5px 450px;
+	color:white;
+}
+#nav {
+	border: 1px solid black;
+	background-color:#1f1b4b;
+	margin:0px 0px 10px 0px;
+}
+
+</style>
+</head>
+
+
+
+
+<body>
+
+<div id="header">
+
+<h1>Unibuy</h1>
+
+
+<img src=" " alt="logo"> 
+
+<p>log in</p>
+
+<h3>Used items from college students to college students</h3>
+<div id="nav">
+	<a href="index.html">Upload</a>
+	<a href="browse.html">Browse</a>
+</div>
+</div>
+<div id="container">
+
+<div class="form-row">
+<label class="main-label" for="subject">Name:</label>
+<input id="name" type="text" placeholder="Full name" required>
+</div>
+
+<div id="button">
+<input
+  type="file"
+  id="fileElem"
+  multiple
+  accept="image/*"
+  style="display:none" />
+<a href="#" id="fileSelect"><button type="button">Select image</button></a>
+<div id="fileList">
+  <p>No files selected</p>
+  <input type="submit" value="submit">
+  <img id="display-image" src="">
+</div><
+<script>
+const fileSelect = document.getElementById("fileSelect"),
+  fileElem = document.getElementById("fileElem"),
+  fileList = document.getElementById("fileList");
+
+fileSelect.addEventListener(
+  "click",
+  (e) => {
+    if (fileElem) {
+      fileElem.click();
+    }
+    e.preventDefault(); // prevent navigation to "#"
+  },
+  false
+);
+
+fileElem.addEventListener("change", handleFiles, false);
+
+function handleFiles() {
+  if (!this.files.length) {
+    fileList.innerHTML = "<p>No files selected!</p>";
+  } else {
+    fileList.innerHTML = "";
+    const list = document.createElement("ul");
+    fileList.appendChild(list);
+    for (let i = 0; i < this.files.length; i++) {
+      const li = document.createElement("li");
+      list.appendChild(li);
+
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(this.files[i]);
+      img.height = 300;
+      img.onload = () => {
+        URL.revokeObjectURL(img.src);
+      };
+      li.appendChild(img);
+      const info = document.createElement("span");
+      info.innerHTML = `${this.files[i].name}: ${this.files[i].size} bytes`;
+      li.appendChild(info);
+    }
+  }
+}
+</script>
+	<label class="gdrive" for="link">Google drive link for images</label>
+	<textarea id="text" placeholder="https://drive.google.com/drive/folders/1TUtTiEHvlkcahWmwlIG3In8qc7FeIyOA?usp=sharing"></textarea>
+   </form>
+</div>
+<!--
+
+<script>
+	const uploadInput = document.getElementById("uploadInput");
+	uploadInput.addEventListneer("change",()=>{})
+
+<div>
+    <img id="output" width="200" />
+</div>
+<div class="form-group">
+    <label for="exampleFormControlFile1">File Input</label>
+    <input type="file" (change)="uploadFile($event)" class="form-control-file" />
+</div>
+<form action="confirmation.js">
+	<label for="img">Select image:</label>
+
+  <input type="file" id="upload" onChange="handleImageUpload()" accept=".jpg, .jpeg, .png" multiple>
+  
+
+<script>
+function handleFiles(files) {
+	for (let i=0; i<files.length; i++){
+		const file = files[i];
+
+		if (!file.type.startsWith("image/")) {
+			continue;
+		}
+		const img=document.createElement("img");
+		img.classList.add("obj");
+		img.file=file;
+		preview.appendChild(img);
+
+		const reader = new FileReader();
+		reader.onload = (e)=>{
+			img.src=e.target.result;
+		};
+		reader.readAsDataURL(file);
+	}
+}
+ </script>
+
+
+/* content */
+-->
+<p>Buy</p>
+<p>Rent</p>
+<p>Sell</p> 
+
+
+</div>
+</div>
+<div id="footer">
+
+
+</body>
+</html>
